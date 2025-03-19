@@ -1,0 +1,173 @@
+import React from 'react';
+import { Button } from '@/components/ui/button';
+import { Sparkles, BrainCircuit, MessageSquare, TrendingUp } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+
+// Animation variants
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            delayChildren: 0.3,
+            staggerChildren: 0.2
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1
+    }
+};
+
+const FeatureCard = ({ title, description, icon: Icon }: { title: string; description: string; icon: React.FC<React.SVGProps<SVGSVGElement>> }) => {
+    return (
+        <motion.div
+            variants={itemVariants}
+            className="bg-white/5 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+        >
+            <div className="flex items-center gap-4 mb-4">
+                <Icon className="w-8 h-8 text-purple-400" />
+                <h3 className="text-xl font-semibold text-white">{title}</h3>
+            </div>
+            <p className="text-gray-300">{description}</p>
+        </motion.div>
+    );
+};
+
+const AICopywritingLandingPage = () => {
+    return (
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white flex flex-col">
+            {/* Hero Section */}
+            <header className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 text-center">
+                <div className="max-w-4xl mx-auto">
+                    <motion.h1
+                        initial={{ opacity: 0, y: -50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        className="text-4xl sm:text-5xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400 mb-4"
+                    >
+                        Supercharge Your Brand with AI
+                    </motion.h1>
+                    <motion.p
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: "easeInOut", delay: 0.3 }}
+                        className="text-lg md:text-xl text-gray-300 mb-8"
+                    >
+                        AI-powered copywriting and social media management for explosive growth.
+                    </motion.p>
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.8, ease: "easeInOut", delay: 0.6 }}
+                    >
+                        <Button
+                            variant="default"
+                            size="lg"
+                            className={cn(
+                                "bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-full",
+                                "shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300",
+                                "font-semibold text-lg"
+                            )}
+                        >
+                            Get a Free Consultation <Sparkles className="ml-2 w-5 h-5" />
+                        </Button>
+                    </motion.div>
+                </div>
+            </header>
+
+            {/* Features Section */}
+            <section className="py-16 px-4 sm:px-6 lg:px-8">
+                <div className="max-w-6xl mx-auto">
+                    <h2 className="text-3xl font-semibold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-pink-300">
+                        Our Services
+                    </h2>
+                    <motion.div
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    >
+                        <FeatureCard
+                            title="AI Copywriting"
+                            description="Generate high-converting copy for ads, websites, and more."
+                            icon={BrainCircuit}
+                        />
+                        <FeatureCard
+                            title="Social Media Management"
+                            description="Automate posting, engagement, and analytics."
+                            icon={MessageSquare}
+                        />
+                        <FeatureCard
+                            title="Branding Strategy"
+                            description="Develop a unique brand identity and messaging."
+                            icon={TrendingUp}
+                        />
+                        <FeatureCard
+                            title="Content Creation"
+                            description="Create blog posts, articles, and other valuable content."
+                            icon={Sparkles}
+                        />
+                        <FeatureCard
+                            title="Performance Tracking"
+                            description="Monitor your results and optimize your campaigns."
+                            icon={TrendingUp}
+                        />
+                        <FeatureCard
+                            title="24/7 Support"
+                            description="Dedicated support team to help you succeed."
+                            icon={MessageSquare}
+                        />
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* Testimonials (Optional) */}
+            {/* Add a testimonials section here if you have any quotes from clients. */}
+
+            {/* Call to Action */}
+            <section className="py-16 px-4 sm:px-6 lg:px-8 text-center">
+                <div className="max-w-3xl mx-auto">
+                    <h2 className="text-3xl font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-pink-300">
+                        Ready to Transform Your Brand?
+                    </h2>
+                    <p className="text-lg text-gray-300 mb-8">
+                        Get in touch for a free consultation and discover how AI can help you achieve your goals.
+                    </p>
+                    <Button
+                        variant="default"
+                        size="xl"
+                        className={cn(
+                            "bg-gradient-to-r from-purple-500 to-pink-500 text-white px-10 py-4 rounded-full",
+                            "shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300",
+                            "font-semibold text-xl"
+                        )}
+                    >
+                        Contact Us <Sparkles className="ml-3 w-6 h-6" />
+                    </Button>
+                </div>
+            </section>
+
+            {/* Footer */}
+            <footer className="py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+                <p>&copy; {new Date().getFullYear()} AI Copywriting Agency. All rights reserved.</p>
+                <p>
+                    <a href="#" className="hover:text-purple-400 transition-colors">
+                        Terms of Service
+                    </a>
+                    &nbsp;•&nbsp;
+                    <a href="#" className="hover:text-purple-400 transition-colors">
+                        Privacy Policy
+                    </a>
+                </p>
+            </footer>
+        </div>
+    );
+};
+
+export default AICopywritingLandingPage;
